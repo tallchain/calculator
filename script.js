@@ -47,7 +47,10 @@ buttonText.forEach((item) => {
     const createNumButton = document.createElement("button")
     createNumButton.textContent = item;
     createNumButton.classList.add("button");
-    createNumButton.addEventListener("click", () => {calcDisplay.textContent += (item)})
+    createNumButton.addEventListener("click", (e) => {
+        if (item == "+" || item == "-" || item == "*" || item == "/"){
+            op = e
+        } else {calcDisplay.textContent += (item)}})
     container.appendChild(createNumButton);
 })
 clear.addEventListener("click", () => calcDisplay.textContent = "")
