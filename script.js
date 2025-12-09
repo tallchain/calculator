@@ -46,7 +46,7 @@ buttonText.forEach((item) => {
         }})
     container.appendChild(createNumButton);
 })
-clear.addEventListener("click", () => calcDisplay.textContent = "")
+clear.addEventListener("click", () => {calcDisplay.textContent = ""; op = undefined; int1 = undefined; int2 = undefined})
 equalSign.addEventListener("click", () => {int2 = calcDisplay.textContent;
     console.log(int2);
     operate(op);})
