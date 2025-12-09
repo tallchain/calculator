@@ -23,17 +23,19 @@ function operate(int1, int2, op){
 }
 
 //Manipulating DOM
-let container = document.querySelector(".container")
-let selectButton = document.querySelector(".button")
-let calcDisplay = document.querySelector(".calcDisplay")
-let clear = document.querySelector(".clear")
+const container = document.querySelector(".container")
+const selectButton = document.querySelector(".button")
+const calcDisplay = document.querySelector(".calcDisplay")
+const clear = document.querySelector(".clear")
+
 //Creating buttons
-for (let makeButtonNum = 0; makeButtonNum < 10; makeButtonNum++) {
-    let createButton = document.createElement("button")
-    createButton.textContent = makeButtonNum;
-    createButton.classList.add("button");
-    createButton.addEventListener("click", () => {calcDisplay.textContent = (makeButtonNum)})
-    container.appendChild(createButton);
-}
+const buttonText = ['1', '2', '3', '4', '5', '6', '7', '8', '9', "+", '-', '*', '/']
+buttonText.forEach((item) => {
+    const createNumButton = document.createElement("button")
+    createNumButton.textContent = item;
+    createNumButton.classList.add("button");
+    createNumButton.addEventListener("click", () => {calcDisplay.textContent += (item)})
+    container.appendChild(createNumButton);
+})
 clear.addEventListener("click", () => calcDisplay.textContent = "")
 
