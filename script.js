@@ -23,15 +23,17 @@ function operate(int1, int2, op){
 }
 
 //Manipulating DOM
-let container = document.querySelector("div")
+let container = document.querySelector(".container")
 let selectButton = document.querySelector(".button")
-
+let calcDisplay = document.querySelector(".calcDisplay")
+let clear = document.querySelector(".clear")
 //Creating buttons
 for (let makeButtonNum = 0; makeButtonNum < 10; makeButtonNum++) {
     let createButton = document.createElement("button")
     createButton.textContent = makeButtonNum;
     createButton.classList.add("button");
-    createButton.addEventListener("click", () => console.log(makeButtonNum))
+    createButton.addEventListener("click", () => {calcDisplay.textContent = (makeButtonNum)})
     container.appendChild(createButton);
 }
+clear.addEventListener("click", () => calcDisplay.textContent = "")
 
