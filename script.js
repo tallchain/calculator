@@ -15,11 +15,18 @@ function divide(a, b) {
     calcDisplay.textContent = (a / b)
 }
 function operate(text) {
-    let array = text.split("")
+    if (text.includes("*")) {
+        op = "*"}
+        else if (text.includes("+")) {
+            op = "+"
+    } else if (text.includes("/")) {
+        op = "/"
+    } else if (text.includes("-")) {
+        op = "-"
+    }
+    let array = text.split(op);
     let int1 = array[0];
-    let int2 = array[2];
-    let op = array[1]
-
+    let int2 = array[1];
     if (op == "+") {add(int1,int2)}
     else if (op == "-") {subtract(int1,int2)}
     else if (op == "*") {multiply(int1, int2)}
@@ -45,3 +52,4 @@ buttonText.forEach((item) => {
 })
 clear.addEventListener("click", () => calcDisplay.textContent = "")
 equalSign.addEventListener("click", () => operate(calcDisplay.textContent))
+//const operators = ("+" || "-" || "*" || "/")
