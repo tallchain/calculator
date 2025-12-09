@@ -3,18 +3,23 @@ let int1
 let int2
 let operator
 function add(a, b) {
-    console.log(a+b)
+    calcDisplay.textContent = (parseFloat(a) + parseFloat(b))
 }
 function subtract(a, b) {
-    console.log(a-b)
+    calcDisplay.textContent = (a - b)
 }
 function multiply(a, b) {
-    console.log(a*b)
+    calcDisplay.textContent = (a * b)
 }
 function divide(a, b) {
-    console.log(a/b)
+    calcDisplay.textContent = (a / b)
 }
-function operate(int1, int2, op){
+function operate(text) {
+    let array = text.split("")
+    let int1 = array[0];
+    let int2 = array[2];
+    let op = array[1]
+
     if (op == "+") {add(int1,int2)}
     else if (op == "-") {subtract(int1,int2)}
     else if (op == "*") {multiply(int1, int2)}
@@ -27,6 +32,7 @@ const container = document.querySelector(".container")
 const selectButton = document.querySelector(".button")
 const calcDisplay = document.querySelector(".calcDisplay")
 const clear = document.querySelector(".clear")
+const equalSign = document.querySelector(".equalSign")
 
 //Creating buttons
 const buttonText = ['1', '2', '3', '4', '5', '6', '7', '8', '9', "+", '-', '*', '/']
@@ -38,4 +44,4 @@ buttonText.forEach((item) => {
     container.appendChild(createNumButton);
 })
 clear.addEventListener("click", () => calcDisplay.textContent = "")
-
+equalSign.addEventListener("click", () => operate(calcDisplay.textContent))
