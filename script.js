@@ -24,13 +24,14 @@ function operate(int1, int2, op){
 
 //Manipulating DOM
 let container = document.querySelector("div")
-let selectButton = document.querySelector(".buttons")
+let selectButton = document.querySelector(".button")
 
-//Making buttons
+//Creating buttons
 for (let makeButtonNum = 0; makeButtonNum < 10; makeButtonNum++) {
     let createButton = document.createElement("button")
     createButton.textContent = makeButtonNum;
-    createButton.classList.add("buttons");
+    createButton.classList.add("button");
+    createButton.addEventListener("click", () => console.log(makeButtonNum))
     container.appendChild(createButton);
 }
 
