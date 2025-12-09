@@ -12,21 +12,10 @@ function multiply(a, b) {
     calcDisplay.textContent = (a * b)
 }
 function divide(a, b) {
-    calcDisplay.textContent = (a / b)
+    if (b=0) {calcDisplay.textContent = "You can't divide by 0, silly goose."}
+    else {calcDisplay.textContent = (a / b)}
 }
-function operate(text) {
-    if (text.includes("*")) {
-        op = "*"}
-        else if (text.includes("+")) {
-            op = "+"
-    } else if (text.includes("/")) {
-        op = "/"
-    } else if (text.includes("-")) {
-        op = "-"
-    }
-    let array = text.split(op);
-    let int1 = array[0];
-    let int2 = array[1];
+function operate(op) {
     if (op == "+") {add(int1,int2)}
     else if (op == "-") {subtract(int1,int2)}
     else if (op == "*") {multiply(int1, int2)}
@@ -42,17 +31,23 @@ const clear = document.querySelector(".clear")
 const equalSign = document.querySelector(".equalSign")
 
 //Creating buttons
-const buttonText = ['1', '2', '3', '4', '5', '6', '7', '8', '9', "+", '-', '*', '/']
+const buttonText = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', "+", '-', '*', '/']
 buttonText.forEach((item) => {
     const createNumButton = document.createElement("button")
     createNumButton.textContent = item;
     createNumButton.classList.add("button");
-    createNumButton.addEventListener("click", (e) => {
+    createNumButton.addEventListener("click", () => {
         if (item == "+" || item == "-" || item == "*" || item == "/"){
-            op = e
-        } else {calcDisplay.textContent += (item)}})
+            op = item;
+            int1 = calcDisplay.textContent
+            calcDisplay.textContent = ""
+            console.log(int1)
+        } else {calcDisplay.textContent += (item)
+        }})
     container.appendChild(createNumButton);
 })
 clear.addEventListener("click", () => calcDisplay.textContent = "")
-equalSign.addEventListener("click", () => operate(calcDisplay.textContent))
+equalSign.addEventListener("click", () => {int2 = calcDisplay.textContent;
+    console.log(int2);
+    operate(op);})
 //const operators = ("+" || "-" || "*" || "/")
