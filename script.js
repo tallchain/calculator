@@ -12,7 +12,7 @@ function multiply(a, b) {
     calcDisplay.textContent = (a * b)
 }
 function divide(a, b) {
-    if (b=0) {calcDisplay.textContent = "You can't divide by 0, silly goose."}
+    if (b==0) {calcDisplay.textContent = "You can't divide by 0, silly goose."}
     else {calcDisplay.textContent = (a / b)}
 }
 function operate(op) {
@@ -37,13 +37,18 @@ buttonText.forEach((item) => {
     createNumButton.textContent = item;
     createNumButton.classList.add("button");
     createNumButton.addEventListener("click", () => {
-        if (item == "+" || item == "-" || item == "*" || item == "/"){
-            op = item;
+    if (item == "+" || item == "-" || item == "*" || item == "/"){
+        if (op != undefined){
+            int2 = calcDisplay.textContent;
+            operate(op);
+        }
+            else {op = item;
             int1 = calcDisplay.textContent
             calcDisplay.textContent = ""
             console.log(int1)
-        } else {calcDisplay.textContent += (item)
-        }})
+        }}
+        else {calcDisplay.textContent += (item)}
+        })
     container.appendChild(createNumButton);
 })
 clear.addEventListener("click", () => {calcDisplay.textContent = ""; op = undefined; int1 = undefined; int2 = undefined})
