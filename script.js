@@ -38,16 +38,13 @@ buttonText.forEach((item) => {
     createNumButton.classList.add("button");
     createNumButton.addEventListener("click", () => {
     if (item == "+" || item == "-" || item == "*" || item == "/"){
-        if (op != undefined){
-            int2 = calcDisplay.textContent;
-            operate(op);
+        int1 = calcDisplay.textContent
+        op = item
         }
-            else {op = item;
-            int1 = calcDisplay.textContent
-            calcDisplay.textContent = ""
-            console.log(int1)
-        }}
-        else {calcDisplay.textContent += (item)}
+    else if (int1 == calcDisplay.textContent ) {
+        calcDisplay.textContent = item
+    } 
+    else {calcDisplay.textContent += (item)}
         })
     container.appendChild(createNumButton);
 })
