@@ -57,5 +57,6 @@ buttonText.forEach((item) => {
 clear.addEventListener("click", () => {calcDisplay.textContent = ""; op = undefined; int1 = undefined; int2 = undefined})
 equalSign.addEventListener("click", () => {
     int2 = calcDisplay.textContent;
-    operate(op);})
+    operate(op);
+    op = undefined})
 //const operators = ("+" || "-" || "*" || "/")
