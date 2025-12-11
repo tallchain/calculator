@@ -1,9 +1,10 @@
 //Calculations
-let int1
-let int2
-let operator
+let int1 = undefined
+let int2= undefined
+let op = undefined
 function add(a, b) {
-    calcDisplay.textContent = (parseFloat(a) + parseFloat(b))
+    calcDisplay.textContent = (parseFloat(a) + parseFloat(b));
+    int1 = calcDisplay.textContent
 }
 function subtract(a, b) {
     calcDisplay.textContent = (a - b)
@@ -37,19 +38,24 @@ buttonText.forEach((item) => {
     createNumButton.textContent = item;
     createNumButton.classList.add("button");
     createNumButton.addEventListener("click", () => {
-    if (item == "+" || item == "-" || item == "*" || item == "/"){
-        int1 = calcDisplay.textContent
-        op = item
+    if (item == "+" || item == "-" || item == "*" || item == "/")
+        if (op != undefined) {
+            int2 = calcDisplay.textContent;
+            operate(op)
+        } 
+        else {
+        int1 = calcDisplay.textContent;
+        op = item;
         }
-    else if (int1 == calcDisplay.textContent ) {
+    else if (int1 != undefined) {
         calcDisplay.textContent = item
-    } 
-    else {calcDisplay.textContent += (item)}
-        })
+    }
+    else {calcDisplay.textContent += item}
+    })
     container.appendChild(createNumButton);
 })
 clear.addEventListener("click", () => {calcDisplay.textContent = ""; op = undefined; int1 = undefined; int2 = undefined})
-equalSign.addEventListener("click", () => {int2 = calcDisplay.textContent;
-    console.log(int2);
+equalSign.addEventListener("click", () => {
+    int2 = calcDisplay.textContent;
     operate(op);})
 //const operators = ("+" || "-" || "*" || "/")
