@@ -33,19 +33,20 @@ const equalSign = document.querySelector(".equalSign")
 
 //Creating buttons
 const buttonText = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', "+", '-', '*', '/']
-buttonText.forEach((item) => {
-    const createNumButton = document.createElement("button")
-    createNumButton.textContent = item;
-    createNumButton.classList.add("button");
-    createNumButton.addEventListener("click", () => {
-    if (item == "+" || item == "-" || item == "*" || item == "/")
-        if (op != undefined) {
-            int2 = calcDisplay.textContent;
-            operate(op)
+buttonText.forEach((clickedButton) => {
+    const createButton = document.createElement("button")
+    createButton.textContent = clickedButton;
+    createButton.classList.add("button");
+    createButton.addEventListener("click", () => {
+    if (clickedButton == "+" || clickedButton == "-" || clickedButton == "*" || clickedButton == "/")
+        if (operator != undefined) {
+            findOperation(operator)
+            operator = clickedButton
+            int2 = undefined
         } 
         else {
         int1 = calcDisplay.textContent;
-        op = item;
+        operator = clickedButton;
         }
     else if (int1 != undefined && int2 == undefined) { 
         calcDisplay.textContent = clickedButton
