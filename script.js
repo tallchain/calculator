@@ -17,7 +17,8 @@ function divide(a, b) {
     else {calcDisplay.textContent = (a / b)}
 }
 function findOperation(operator) {
-    if (operator == "+") {add(int1,int2)}
+    if (int2 == undefined){return}
+    else if (operator == "+") {add(int1,int2)}
     else if (operator == "-") {subtract(int1,int2)}
     else if (operator == "*") {multiply(int1, int2)}
     else if (operator == "/") {divide(int1,int2)}
@@ -50,6 +51,9 @@ buttonText.forEach((clickedButton) => {
         }
     else if (int1 != undefined && int2 == undefined) { 
         calcDisplay.textContent = clickedButton
+        int2 = calcDisplay.textContent
+    }
+    else if (int2 != undefined){calcDisplay.textContent += clickedButton
         int2 = calcDisplay.textContent
     }
     else {calcDisplay.textContent += clickedButton}
