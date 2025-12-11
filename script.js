@@ -1,7 +1,7 @@
 //Calculations
 let int1 = undefined
 let int2= undefined
-let op = undefined
+let operator = undefined
 function add(a, b) {
     calcDisplay.textContent = (parseFloat(a) + parseFloat(b));
     int1 = calcDisplay.textContent
@@ -13,14 +13,14 @@ function multiply(a, b) {
     calcDisplay.textContent = (a * b)
 }
 function divide(a, b) {
-    if (b==0) {calcDisplay.textContent = "You can't divide by 0, silly goose."}
+    if (b == 0) {calcDisplay.textContent = "You can't divide by 0, silly goose."}
     else {calcDisplay.textContent = (a / b)}
 }
-function operate(op) {
-    if (op == "+") {add(int1,int2)}
-    else if (op == "-") {subtract(int1,int2)}
-    else if (op == "*") {multiply(int1, int2)}
-    else if (op == "/") {divide(int1,int2)}
+function findOperation(operator) {
+    if (operator == "+") {add(int1,int2)}
+    else if (operator == "-") {subtract(int1,int2)}
+    else if (operator == "*") {multiply(int1, int2)}
+    else if (operator == "/") {divide(int1,int2)}
     else return("error")
 }
 
@@ -47,16 +47,20 @@ buttonText.forEach((item) => {
         int1 = calcDisplay.textContent;
         op = item;
         }
-    else if (int1 != undefined) {
-        calcDisplay.textContent = item
+    else if (int1 != undefined && int2 == undefined) { 
+        calcDisplay.textContent = clickedButton
+        int2 = calcDisplay.textContent
     }
-    else {calcDisplay.textContent += item}
+    else {calcDisplay.textContent += clickedButton}
     })
-    container.appendChild(createNumButton);
+    container.appendChild(createButton);
 })
-clear.addEventListener("click", () => {calcDisplay.textContent = ""; op = undefined; int1 = undefined; int2 = undefined})
+clear.addEventListener("click", () => {calcDisplay.textContent = ""; 
+    operator = undefined; 
+    int1 = undefined; 
+    int2 = undefined
+})
 equalSign.addEventListener("click", () => {
     int2 = calcDisplay.textContent;
-    operate(op);
-    op = undefined})
-//const operators = ("+" || "-" || "*" || "/")
+    findOperation(operator);
+    operator = undefined})
