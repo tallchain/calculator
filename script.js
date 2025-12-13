@@ -2,22 +2,30 @@
 let int1 = undefined
 let int2= undefined
 let operator = undefined
-function add(a, b) {
-    calcDisplay.textContent = (parseFloat(a) + parseFloat(b));
+
+function displayOperationToCalcDisplay (number) {
+    calcDisplay.textContent = Math.round((number + Number.EPSILON)* 100) / 100
     assignIntFromCalcDisplay()
+}
+function add(a, b) {
+    let number = (parseFloat(a) + parseFloat(b));
+    displayOperationToCalcDisplay(number)
 }
 function subtract(a, b) {
-    calcDisplay.textContent = (a - b)
-    assignIntFromCalcDisplay()
+    let number = (a - b)
+    displayOperationToCalcDisplay(number)
+
 }
 function multiply(a, b) {
-    calcDisplay.textContent = (a * b)
-    assignIntFromCalcDisplay()
+   let number = (a * b)
+    displayOperationToCalcDisplay(number)
+
 }
 function divide(a, b) {
     if (b == 0) {calcDisplay.textContent = "You can't divide by 0, silly goose."}
-    else {calcDisplay.textContent = (a / b)}
-    assignIntFromCalcDisplay()
+    else {let number = (a / b);
+    displayOperationToCalcDisplay(number)
+    }
 }
 function assignIntFromCalcDisplay() {int1 = calcDisplay.textContent}
 function findOperation(operator) {
