@@ -49,15 +49,15 @@ buttonText.forEach((clickedButton) => {
             operator = clickedButton;
         } 
         else {
-            findOperation(operator)
+            removeInt2AfterOperation();
             operator = clickedButton;
-            int2 = undefined
         }
     else if (int1 != undefined && int2 == undefined) { 
         calcDisplay.textContent = clickedButton;
         int2 = calcDisplay.textContent;
     }
-    else if (int2 != undefined){calcDisplay.textContent += clickedButton;
+    else if (int2 != undefined) {
+        calcDisplay.textContent += clickedButton;
         int2 = calcDisplay.textContent
     }
     else {calcDisplay.textContent += clickedButton}
@@ -71,6 +71,11 @@ clear.addEventListener("click", () => {calcDisplay.textContent = "";
     int2 = undefined;
 })
 equalSign.addEventListener("click", () => {
-    findOperation(operator);
+    removeInt2AfterOperation();
     operator = undefined;
-    int2 = undefined})
+    })
+
+function removeInt2AfterOperation() {    
+        findOperation(operator);
+        int2 = undefined
+    }
