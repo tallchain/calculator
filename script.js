@@ -4,7 +4,7 @@ let int2= undefined
 let operator = undefined
 
 function displayOperationToCalcDisplay (number) {
-    calcDisplay.textContent = Math.round((number + Number.EPSILON)* 100) / 100
+    calcDisplay.textContent = Math.round((number + Number.EPSILON) * 100) / 100
     assignIntFromCalcDisplay()
 }
 function add(a, b) {
@@ -45,7 +45,7 @@ const clear = document.querySelector(".clear")
 const equalSign = document.querySelector(".equalSign")
 
 //Creating buttons
-const buttonText = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', "+", '-', '*', '/']
+const buttonText = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', ".", "+", '-', '*', '/']
 buttonText.forEach((clickedButton) => {
     const createButton = document.createElement("button")
     createButton.textContent = clickedButton;
