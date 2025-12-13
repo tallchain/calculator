@@ -43,6 +43,7 @@ const selectButton = document.querySelector(".button")
 const calcDisplay = document.querySelector(".calcDisplay")
 const clear = document.querySelector(".clear")
 const equalSign = document.querySelector(".equalSign")
+const numberButtonContainer = document.querySelector(".numberButtonContainer")
 
 //Creating buttons
 const buttonText = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', ".", "+", '-', '*', '/']
@@ -70,7 +71,7 @@ buttonText.forEach((clickedButton) => {
     }
     else {calcDisplay.textContent += clickedButton}
     })
-    container.appendChild(createButton);
+    numberButtonContainer.appendChild(createButton);
 })
 
 clear.addEventListener("click", () => {calcDisplay.textContent = ""; 
@@ -87,3 +88,4 @@ function removeInt2AfterOperation() {
         findOperation(operator);
         int2 = undefined
     }
+    
