@@ -4,18 +4,22 @@ let int2= undefined
 let operator = undefined
 function add(a, b) {
     calcDisplay.textContent = (parseFloat(a) + parseFloat(b));
-    int1 = calcDisplay.textContent
+    assignIntFromCalcDisplay()
 }
 function subtract(a, b) {
     calcDisplay.textContent = (a - b)
+    assignIntFromCalcDisplay()
 }
 function multiply(a, b) {
     calcDisplay.textContent = (a * b)
+    assignIntFromCalcDisplay()
 }
 function divide(a, b) {
     if (b == 0) {calcDisplay.textContent = "You can't divide by 0, silly goose."}
     else {calcDisplay.textContent = (a / b)}
+    assignIntFromCalcDisplay()
 }
+function assignIntFromCalcDisplay() {int1 = calcDisplay.textContent}
 function findOperation(operator) {
     if (int2 == undefined){return}
     else if (operator == "+") {add(int1,int2)}
@@ -40,32 +44,33 @@ buttonText.forEach((clickedButton) => {
     createButton.classList.add("button");
     createButton.addEventListener("click", () => {
     if (clickedButton == "+" || clickedButton == "-" || clickedButton == "*" || clickedButton == "/")
-        if (operator != undefined) {
-            findOperation(operator)
-            operator = clickedButton
-            int2 = undefined
+        if (operator == undefined) {
+            int1 = calcDisplay.textContent;
+            operator = clickedButton;
         } 
         else {
-        int1 = calcDisplay.textContent;
-        operator = clickedButton;
+            findOperation(operator)
+            operator = clickedButton;
+            int2 = undefined
         }
     else if (int1 != undefined && int2 == undefined) { 
-        calcDisplay.textContent = clickedButton
-        int2 = calcDisplay.textContent
+        calcDisplay.textContent = clickedButton;
+        int2 = calcDisplay.textContent;
     }
-    else if (int2 != undefined){calcDisplay.textContent += clickedButton
+    else if (int2 != undefined){calcDisplay.textContent += clickedButton;
         int2 = calcDisplay.textContent
     }
     else {calcDisplay.textContent += clickedButton}
     })
     container.appendChild(createButton);
 })
+
 clear.addEventListener("click", () => {calcDisplay.textContent = ""; 
     operator = undefined; 
     int1 = undefined; 
-    int2 = undefined
+    int2 = undefined;
 })
 equalSign.addEventListener("click", () => {
-    int2 = calcDisplay.textContent;
     findOperation(operator);
-    operator = undefined})
+    operator = undefined;
+    int2 = undefined})
