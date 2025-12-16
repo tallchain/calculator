@@ -52,7 +52,7 @@ function createButtons(clickedButton) {
     const createButton = document.createElement("button")
     createButton.textContent = clickedButton;
     createButton.classList.add("button");
-    createButton.addEventListener("click", (e) => addButtonEventListener(e.currentTarget.textContent))
+    createButton.addEventListener("mouseup", (e) => addButtonEventListener(e.currentTarget.textContent))
     numberButtonContainer.appendChild(createButton);
 }
 function addButtonEventListener(clickedButton) { 
@@ -96,7 +96,8 @@ function findResult() {
 }
 document.addEventListener("keypress", (e) => {
     if (buttonText.includes(e.key))
-        {calcDisplay.textContent += e.key}
+        {addButtonEventListener(e.key)}
+    else if (e.key == "Enter") {findResult()}
 })
 function removeInt2AfterOperation() {    
         findOperation(operator);
