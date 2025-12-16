@@ -86,9 +86,12 @@ equalSign.addEventListener("click", () => {
     removeInt2AfterOperation();
     operator = undefined;
     })
-
+document.addEventListener("keypress", (e) => { 
+    calcDisplay.textContent += e.key
+    })
 function removeInt2AfterOperation() {    
         findOperation(operator);
         int2 = undefined
     }
+
     
