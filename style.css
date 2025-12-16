@@ -45,7 +45,7 @@ button {
 .clearEqualButtonContainer {
     display: flex;
 }
-.clear,
-.equalSign {
+.clearButton,
+.equalButton {
     flex: 1;
 }

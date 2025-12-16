@@ -39,7 +39,7 @@ function findOperation(operator) {
 
 //Manipulating DOM
 const container = document.querySelector(".container");
-const clearButton = document.querySelector(".clear");
+const clearButton = document.querySelector(".clearButton");
 const equalButton = document.querySelector(".equalButton");
 const calcDisplay = document.querySelector(".calcDisplay");
 const numberButtonContainer = document.querySelector(".numberButtonContainer");
@@ -83,16 +83,17 @@ function addButtonEventListener(clickedButton) {
     }
     else {calcDisplay.textContent += clickedButton}
 }
-clearButton.addEventListener("click", () => {
+clearButton.addEventListener("click", clear)
+function clear() {    
     calcDisplay.textContent = ""; 
     operator = undefined; 
     int1 = undefined; 
-    int2 = undefined;
-})
-equalButton.addEventListener("click", () => {
+    int2 = undefined}
+equalButton.addEventListener("click", findResult)
+function findResult() {
     removeInt2AfterOperation();
     operator = undefined;
-})
+}
 document.addEventListener("keypress", (e) => {
     if (buttonText.includes(e.key))
         {calcDisplay.textContent += e.key}
@@ -101,5 +102,3 @@ function removeInt2AfterOperation() {
         findOperation(operator);
         int2 = undefined;
     }
-
-    
