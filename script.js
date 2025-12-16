@@ -83,13 +83,13 @@ function addButtonEventListener(clickedButton) {
     }
     else {calcDisplay.textContent += clickedButton}
 }
-clearButton.addEventListener("click", clear)
+clearButton.addEventListener("click", clear())
 function clear() {    
     calcDisplay.textContent = ""; 
     operator = undefined; 
     int1 = undefined; 
     int2 = undefined}
-equalButton.addEventListener("click", findResult)
+equalButton.addEventListener("click", findResult())
 function findResult() {
     removeInt2AfterOperation();
     operator = undefined;
