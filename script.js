@@ -39,8 +39,8 @@ function findOperation(operator) {
 
 //Manipulating DOM
 const container = document.querySelector(".container");
-const clear = document.querySelector(".clear");
-const equalSign = document.querySelector(".equalSign");
+const clearButton = document.querySelector(".clear");
+const equalButton = document.querySelector(".equalButton");
 const calcDisplay = document.querySelector(".calcDisplay");
 const numberButtonContainer = document.querySelector(".numberButtonContainer");
 
@@ -53,8 +53,8 @@ function createButtons(clickedButton) {
     createButton.textContent = clickedButton;
     createButton.classList.add("button");
     createButton.addEventListener("click", (e) => addButtonEventListener(e.currentTarget.textContent))
-    numberButtonContainer.appendChild(createButton);}
-
+    numberButtonContainer.appendChild(createButton);
+}
 function addButtonEventListener(clickedButton) { 
         if (clickedButton == "+" 
         || clickedButton == "-" 
@@ -81,14 +81,15 @@ function addButtonEventListener(clickedButton) {
         calcDisplay.textContent += clickedButton;
         int2 = calcDisplay.textContent;
     }
-    else {calcDisplay.textContent += clickedButton}}
-clear.addEventListener("click", () => {
+    else {calcDisplay.textContent += clickedButton}
+}
+clearButton.addEventListener("click", () => {
     calcDisplay.textContent = ""; 
     operator = undefined; 
     int1 = undefined; 
     int2 = undefined;
 })
-equalSign.addEventListener("click", () => {
+equalButton.addEventListener("click", () => {
     removeInt2AfterOperation();
     operator = undefined;
 })
