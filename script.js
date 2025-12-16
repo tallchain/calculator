@@ -61,7 +61,7 @@ buttonText.forEach((clickedButton) => {
             removeInt2AfterOperation();
             operator = clickedButton;
         }
-    else if (clickedButton == "." && int1.includes(".") || clickedButton == "." && int2.includes(".")) {
+    else if (clickedButton == "." && calcDisplay.textContent.includes(".")) {
         return
     }
     else if (int1 != undefined && int2 == undefined) { 
