@@ -4,7 +4,7 @@ let int2= undefined;
 let operator = undefined;
 
 function displayOperationToCalcDisplay (number) {
-    calcDisplay.textContent = Math.round((number + Number.EPSILON) * 100) / 100;
+    calcDisplayBottom.textContent = Math.round((number + Number.EPSILON) * 100) / 100;
     assignIntFromCalcDisplay();
 }
 function add(a, b) {
@@ -22,12 +22,12 @@ function multiply(a, b) {
 
 }
 function divide(a, b) {
-    if (b == 0) {calcDisplay.textContent = "You can't divide by 0, silly goose."}
+    if (b == 0) {calcDisplayBottom.textContent = "You can't divide by 0, silly goose."}
     else {let number = (a / b);
     displayOperationToCalcDisplay(number);
     }
 }
-function assignIntFromCalcDisplay() {int1 = calcDisplay.textContent}
+function assignIntFromCalcDisplay() {int1 = calcDisplayBottom.textContent}
 function findOperation(operator) {
     if (int2 == undefined){return}
     else if (operator == "+") {add(int1,int2)}
@@ -39,29 +39,26 @@ function findOperation(operator) {
 
 //Manipulating DOM
 const container = document.querySelector(".container");
+const buttonContainer = document.querySelector(".buttonContainer")
+const numberButtons = document.querySelectorAll(".numberButton");
+const numberButtonContainer = document.querySelector(".numberButtonContainer");
 const clearButton = document.querySelector(".clearButton");
 const equalButton = document.querySelector(".equalButton");
-const calcDisplay = document.querySelector(".calcDisplay");
-const numberButtonContainer = document.querySelector(".numberButtonContainer");
+const calcDisplayTop = document.querySelector(".calcDisplayTop");
+const calcDisplayBottom = document.querySelector(".calcDisplayBottom");
 
 //Creating buttons
-const buttonText = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', ".", "+", '-', '*', '/']
-buttonText.forEach(createButtons);
+numberButtons.forEach((button) => {
+    button.addEventListener("mouseup", (e) => addButtonEventListener(e.currentTarget.textContent))
+});
 
-function createButtons(clickedButton) { 
-    const createButton = document.createElement("button")
-    createButton.textContent = clickedButton;
-    createButton.classList.add("button");
-    createButton.addEventListener("mouseup", (e) => addButtonEventListener(e.currentTarget.textContent))
-    numberButtonContainer.appendChild(createButton);
-}
 function addButtonEventListener(clickedButton) { 
         if (clickedButton == "+" 
         || clickedButton == "-" 
         || clickedButton == "*" 
         || clickedButton == "/")
         if (operator == undefined) {
-            int1 = calcDisplay.textContent;
+            int1 = calcDisplayBottom.textContent;
             operator = clickedButton;
         } 
         else {
@@ -69,23 +66,23 @@ function addButtonEventListener(clickedButton) {
             operator = clickedButton;
         }
     else if (clickedButton == "." 
-        && calcDisplay.textContent.includes(".")) {
+        && calcDisplayBottom.textContent.includes(".")) {
         return
     }
     else if (int1 != undefined
         && int2 == undefined) { 
-        calcDisplay.textContent = clickedButton;
-        int2 = calcDisplay.textContent;
+        calcDisplayBottom.textContent = clickedButton;
+        int2 = calcDisplayBottom.textContent;
     }
     else if (int2 != undefined) {
-        calcDisplay.textContent += clickedButton;
-        int2 = calcDisplay.textContent;
+        calcDisplayBottom.textContent += clickedButton;
+        int2 = calcDisplayBottom.textContent;
     }
-    else {calcDisplay.textContent += clickedButton}
+    else {calcDisplayBottom.textContent += clickedButton}
 }
 clearButton.addEventListener("click", clear)
 function clear() {    
-    calcDisplay.textContent = ""; 
+    calcDisplayBottom.textContent = ""; 
     operator = undefined; 
     int1 = undefined; 
     int2 = undefined}
